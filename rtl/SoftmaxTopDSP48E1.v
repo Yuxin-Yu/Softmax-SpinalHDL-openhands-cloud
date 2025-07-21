@@ -1,10 +1,10 @@
 // Generator : SpinalHDL v1.10.2a    git head : a348a60b7e8b6a455c72e1536ec3d74a2ea16935
-// Component : SoftmaxTop
+// Component : SoftmaxTopDSP48E1
 // Git hash  : 8e9f4bba49c17035003f75211570db0b83f7bedf
 
 `timescale 1ns/1ps
 
-module SoftmaxTop (
+module SoftmaxTopDSP48E1 (
   input  wire [20:0]   io_input_0,
   input  wire [20:0]   io_input_1,
   input  wire [20:0]   io_input_2,
@@ -87,44 +87,74 @@ module Softmax (
   wire       [20:0]   _zz__zz_when_Softmax_l138;
   wire       [20:0]   _zz__zz_when_Softmax_l138_1;
   wire       [47:0]   _zz__zz_when_Softmax_l138_4;
-  wire       [59:0]   _zz__zz_when_Softmax_l138_5;
-  wire       [71:0]   _zz__zz_when_Softmax_l138_6;
-  wire       [23:0]   _zz__zz_when_Softmax_l138_7;
-  wire       [23:0]   _zz__zz_when_Softmax_l138_7_1;
-  wire       [23:0]   _zz__zz_when_Softmax_l138_7_2;
-  wire       [23:0]   _zz__zz_when_Softmax_l138_7_3;
-  wire       [23:0]   _zz__zz_when_Softmax_l138_7_4;
-  wire       [23:0]   _zz__zz_when_Softmax_l138_7_5;
-  wire       [23:0]   _zz__zz_when_Softmax_l138_7_6;
-  wire       [34:0]   _zz__zz_when_Softmax_l138_7_7;
-  wire       [23:0]   _zz__zz_when_Softmax_l138_7_8;
-  wire       [45:0]   _zz__zz_when_Softmax_l138_7_9;
-  wire       [57:0]   _zz__zz_when_Softmax_l138_7_10;
-  wire       [23:0]   _zz__zz_when_Softmax_l138_7_11;
-  wire       [55:0]   _zz__zz_when_Softmax_l138_7_12;
-  wire       [67:0]   _zz__zz_when_Softmax_l138_7_13;
-  wire       [23:0]   _zz__zz_when_Softmax_l138_7_14;
-  wire       [65:0]   _zz__zz_when_Softmax_l138_7_15;
-  wire       [77:0]   _zz__zz_when_Softmax_l138_7_16;
-  wire       [71:0]   _zz__zz_when_Softmax_l138_7_17;
-  wire       [83:0]   _zz__zz_when_Softmax_l138_7_18;
-  wire       [14:0]   _zz_when_Softmax_l138_8;
-  wire       [14:0]   _zz_when_Softmax_l138_9;
-  wire       [43:0]   _zz__zz_expValues_0;
+  wire       [42:0]   _zz__zz_when_Softmax_l138_4_1;
+  wire       [42:0]   _zz__zz_when_Softmax_l138_4_2;
+  wire       [24:0]   _zz__zz_when_Softmax_l138_4_3;
+  wire       [17:0]   _zz__zz_when_Softmax_l138_4_4;
+  wire       [47:0]   _zz__zz_when_Softmax_l138_6;
+  wire       [42:0]   _zz__zz_when_Softmax_l138_6_1;
+  wire       [42:0]   _zz__zz_when_Softmax_l138_6_2;
+  wire       [24:0]   _zz__zz_when_Softmax_l138_6_3;
+  wire       [17:0]   _zz__zz_when_Softmax_l138_6_4;
+  wire       [47:0]   _zz__zz_when_Softmax_l138_8;
+  wire       [42:0]   _zz__zz_when_Softmax_l138_8_1;
+  wire       [42:0]   _zz__zz_when_Softmax_l138_8_2;
+  wire       [24:0]   _zz__zz_when_Softmax_l138_8_3;
+  wire       [17:0]   _zz__zz_when_Softmax_l138_8_4;
+  wire       [47:0]   _zz__zz_when_Softmax_l138_10;
+  wire       [42:0]   _zz__zz_when_Softmax_l138_10_1;
+  wire       [42:0]   _zz__zz_when_Softmax_l138_10_2;
+  wire       [24:0]   _zz__zz_when_Softmax_l138_10_3;
+  wire       [17:0]   _zz__zz_when_Softmax_l138_10_4;
+  wire       [47:0]   _zz__zz_when_Softmax_l138_11;
+  wire       [42:0]   _zz__zz_when_Softmax_l138_11_1;
+  wire       [42:0]   _zz__zz_when_Softmax_l138_11_2;
+  wire       [24:0]   _zz__zz_when_Softmax_l138_11_3;
+  wire       [17:0]   _zz__zz_when_Softmax_l138_11_4;
+  wire       [9:0]    _zz__zz_when_Softmax_l138_11_5;
+  wire       [47:0]   _zz__zz_when_Softmax_l138_12;
+  wire       [42:0]   _zz__zz_when_Softmax_l138_12_1;
+  wire       [42:0]   _zz__zz_when_Softmax_l138_12_2;
+  wire       [24:0]   _zz__zz_when_Softmax_l138_12_3;
+  wire       [17:0]   _zz__zz_when_Softmax_l138_12_4;
+  wire       [7:0]    _zz__zz_when_Softmax_l138_12_5;
+  wire       [47:0]   _zz__zz_when_Softmax_l138_13;
+  wire       [42:0]   _zz__zz_when_Softmax_l138_13_1;
+  wire       [42:0]   _zz__zz_when_Softmax_l138_13_2;
+  wire       [24:0]   _zz__zz_when_Softmax_l138_13_3;
+  wire       [35:0]   _zz__zz_when_Softmax_l138_13_4;
+  wire       [17:0]   _zz__zz_when_Softmax_l138_13_5;
+  wire       [5:0]    _zz__zz_when_Softmax_l138_13_6;
+  wire       [23:0]   _zz__zz_when_Softmax_l138_14;
+  wire       [23:0]   _zz__zz_when_Softmax_l138_14_1;
+  wire       [23:0]   _zz__zz_when_Softmax_l138_14_2;
+  wire       [23:0]   _zz__zz_when_Softmax_l138_14_3;
+  wire       [23:0]   _zz__zz_when_Softmax_l138_14_4;
+  wire       [23:0]   _zz__zz_when_Softmax_l138_14_5;
+  wire       [23:0]   _zz__zz_when_Softmax_l138_14_6;
+  wire       [34:0]   _zz__zz_when_Softmax_l138_14_7;
+  wire       [23:0]   _zz__zz_when_Softmax_l138_14_8;
+  wire       [35:0]   _zz__zz_when_Softmax_l138_14_9;
+  wire       [23:0]   _zz__zz_when_Softmax_l138_14_10;
+  wire       [35:0]   _zz__zz_when_Softmax_l138_14_11;
+  wire       [23:0]   _zz__zz_when_Softmax_l138_14_12;
+  wire       [35:0]   _zz__zz_when_Softmax_l138_14_13;
+  wire       [14:0]   _zz_when_Softmax_l138_15;
+  wire       [14:0]   _zz_when_Softmax_l138_16;
   wire       [43:0]   _zz__zz_expValues_0_1;
-  wire       [31:0]   _zz__zz_expValues_0_2;
-  wire       [31:0]   _zz__zz_expValues_0_3;
-  wire       [23:0]   _zz__zz_expValues_0_4;
-  wire       [19:0]   _zz__zz_expValues_0_5;
+  wire       [31:0]   _zz__zz_expValues_0_1_1;
+  wire       [31:0]   _zz__zz_expValues_0_1_2;
+  wire       [23:0]   _zz__zz_expValues_0;
+  wire       [19:0]   _zz__zz_expValues_0_2;
   wire       [21:0]   _zz_sumExp;
   reg        [19:0]   _zz_sumExp_1;
   wire       [1:0]    _zz_sumExp_2;
-  wire       [1:0]    _zz__zz_3;
   wire       [43:0]   _zz__zz_outputReg_0;
   wire       [31:0]   _zz__zz_outputReg_0_1;
   reg        [19:0]   _zz__zz_outputReg_0_2;
   wire       [1:0]    _zz__zz_outputReg_0_3;
   wire       [31:0]   _zz__zz_outputReg_0_4;
+  wire       [1:0]    _zz__zz_3;
   reg        [2:0]    state_1;
   reg        [2:0]    counter;
   reg        [20:0]   inputReg_0;
@@ -159,16 +189,25 @@ module Softmax (
   wire       [19:0]   _zz_when_Softmax_l138_1;
   wire       [20:0]   _zz_when_Softmax_l138_2;
   wire       [23:0]   _zz_when_Softmax_l138_3;
-  wire       [35:0]   _zz_when_Softmax_l138_4;
-  wire       [47:0]   _zz_when_Softmax_l138_5;
-  wire       [59:0]   _zz_when_Softmax_l138_6;
-  wire       [23:0]   _zz_when_Softmax_l138_7;
+  (* use_dsp = "yes" *) wire       [47:0]   _zz_when_Softmax_l138_4;
+  wire       [35:0]   _zz_when_Softmax_l138_5;
+  (* use_dsp = "yes" *) wire       [47:0]   _zz_when_Softmax_l138_6;
+  wire       [35:0]   _zz_when_Softmax_l138_7;
+  (* use_dsp = "yes" *) wire       [47:0]   _zz_when_Softmax_l138_8;
+  wire       [35:0]   _zz_when_Softmax_l138_9;
+  (* use_dsp = "yes" *) wire       [47:0]   _zz_when_Softmax_l138_10;
+  (* use_dsp = "yes" *) wire       [47:0]   _zz_when_Softmax_l138_11;
+  (* use_dsp = "yes" *) wire       [47:0]   _zz_when_Softmax_l138_12;
+  (* use_dsp = "yes" *) wire       [47:0]   _zz_when_Softmax_l138_13;
+  wire       [23:0]   _zz_when_Softmax_l138_14;
   wire                when_Softmax_l138;
-  wire       [19:0]   _zz_expValues_0_1;
+  (* use_dsp = "yes" *) wire       [43:0]   _zz_expValues_0_1;
+  wire       [19:0]   _zz_expValues_0_2;
   wire                when_Softmax_l201;
   wire                when_Softmax_l211;
+  (* use_dsp = "yes" *) wire       [43:0]   _zz_outputReg_0;
   wire       [3:0]    _zz_3;
-  wire       [43:0]   _zz_outputReg_0;
+  wire       [43:0]   _zz_outputReg_0_1;
   `ifndef SYNTHESIS
   reg [63:0] state_1_string;
   `endif
@@ -182,43 +221,73 @@ module Softmax (
   assign _zz__zz_when_Softmax_l136_1 = counter[1:0];
   assign _zz__zz_when_Softmax_l138 = (when_Softmax_l136 ? _zz__zz_when_Softmax_l138_1 : _zz_when_Softmax_l136);
   assign _zz__zz_when_Softmax_l138_1 = (- _zz_when_Softmax_l136);
-  assign _zz__zz_when_Softmax_l138_4 = (_zz_when_Softmax_l138_3 * _zz_when_Softmax_l138_3);
-  assign _zz__zz_when_Softmax_l138_5 = (_zz_when_Softmax_l138_4 * _zz_when_Softmax_l138_3);
-  assign _zz__zz_when_Softmax_l138_6 = (_zz_when_Softmax_l138_5 * _zz_when_Softmax_l138_3);
-  assign _zz__zz_when_Softmax_l138_7 = (_zz__zz_when_Softmax_l138_7_1 + _zz__zz_when_Softmax_l138_7_11);
-  assign _zz__zz_when_Softmax_l138_7_1 = (_zz__zz_when_Softmax_l138_7_2 + _zz__zz_when_Softmax_l138_7_8);
-  assign _zz__zz_when_Softmax_l138_7_2 = (_zz__zz_when_Softmax_l138_7_3 + _zz__zz_when_Softmax_l138_7_6);
-  assign _zz__zz_when_Softmax_l138_7_3 = (_zz__zz_when_Softmax_l138_7_4 + _zz__zz_when_Softmax_l138_7_5);
-  assign _zz__zz_when_Softmax_l138_7_4 = {4'd0, _zz_when_Softmax_l138_1};
-  assign _zz__zz_when_Softmax_l138_7_5 = {3'd0, _zz_when_Softmax_l138_2};
-  assign _zz__zz_when_Softmax_l138_7_7 = (_zz_when_Softmax_l138_4 >>> 1'd1);
-  assign _zz__zz_when_Softmax_l138_7_6 = _zz__zz_when_Softmax_l138_7_7[23:0];
-  assign _zz__zz_when_Softmax_l138_7_9 = (_zz__zz_when_Softmax_l138_7_10 >>> 4'd12);
-  assign _zz__zz_when_Softmax_l138_7_8 = _zz__zz_when_Softmax_l138_7_9[23:0];
-  assign _zz__zz_when_Softmax_l138_7_10 = (_zz_when_Softmax_l138_5 * 10'h2ab);
-  assign _zz__zz_when_Softmax_l138_7_12 = (_zz__zz_when_Softmax_l138_7_13 >>> 4'd12);
-  assign _zz__zz_when_Softmax_l138_7_11 = _zz__zz_when_Softmax_l138_7_12[23:0];
-  assign _zz__zz_when_Softmax_l138_7_13 = (_zz_when_Softmax_l138_6 * 8'hab);
-  assign _zz__zz_when_Softmax_l138_7_15 = (_zz__zz_when_Softmax_l138_7_16 >>> 4'd12);
-  assign _zz__zz_when_Softmax_l138_7_14 = _zz__zz_when_Softmax_l138_7_15[23:0];
-  assign _zz__zz_when_Softmax_l138_7_16 = (_zz__zz_when_Softmax_l138_7_17 * 6'h22);
-  assign _zz__zz_when_Softmax_l138_7_17 = (_zz__zz_when_Softmax_l138_7_18 >>> 4'd12);
-  assign _zz__zz_when_Softmax_l138_7_18 = (_zz_when_Softmax_l138_6 * _zz_when_Softmax_l138_3);
-  assign _zz_when_Softmax_l138_8 = (_zz_when_Softmax_l138_1 >>> 3'd5);
-  assign _zz_when_Softmax_l138_9 = _zz_when_Softmax_l138_7[14:0];
-  assign _zz__zz_expValues_0 = (_zz__zz_expValues_0_1 / _zz__zz_expValues_0_3);
-  assign _zz__zz_expValues_0_1 = ({12'd0,_zz__zz_expValues_0_2} <<< 4'd12);
-  assign _zz__zz_expValues_0_2 = {12'd0, _zz_when_Softmax_l138_1};
-  assign _zz__zz_expValues_0_3 = {8'd0, _zz_when_Softmax_l138_7};
-  assign _zz__zz_expValues_0_4 = {4'd0, _zz_expValues_0_1};
-  assign _zz__zz_expValues_0_5 = _zz_when_Softmax_l138_7[19:0];
+  assign _zz__zz_when_Softmax_l138_4_1 = _zz__zz_when_Softmax_l138_4_2;
+  assign _zz__zz_when_Softmax_l138_4 = {5'd0, _zz__zz_when_Softmax_l138_4_1};
+  assign _zz__zz_when_Softmax_l138_4_2 = (_zz__zz_when_Softmax_l138_4_3 * _zz__zz_when_Softmax_l138_4_4);
+  assign _zz__zz_when_Softmax_l138_4_3 = {1'd0, _zz_when_Softmax_l138_3};
+  assign _zz__zz_when_Softmax_l138_4_4 = _zz_when_Softmax_l138_3[17:0];
+  assign _zz__zz_when_Softmax_l138_6_1 = _zz__zz_when_Softmax_l138_6_2;
+  assign _zz__zz_when_Softmax_l138_6 = {5'd0, _zz__zz_when_Softmax_l138_6_1};
+  assign _zz__zz_when_Softmax_l138_6_2 = (_zz__zz_when_Softmax_l138_6_3 * _zz__zz_when_Softmax_l138_6_4);
+  assign _zz__zz_when_Softmax_l138_6_3 = _zz_when_Softmax_l138_5[24:0];
+  assign _zz__zz_when_Softmax_l138_6_4 = _zz_when_Softmax_l138_3[17:0];
+  assign _zz__zz_when_Softmax_l138_8_1 = _zz__zz_when_Softmax_l138_8_2;
+  assign _zz__zz_when_Softmax_l138_8 = {5'd0, _zz__zz_when_Softmax_l138_8_1};
+  assign _zz__zz_when_Softmax_l138_8_2 = (_zz__zz_when_Softmax_l138_8_3 * _zz__zz_when_Softmax_l138_8_4);
+  assign _zz__zz_when_Softmax_l138_8_3 = _zz_when_Softmax_l138_7[24:0];
+  assign _zz__zz_when_Softmax_l138_8_4 = _zz_when_Softmax_l138_3[17:0];
+  assign _zz__zz_when_Softmax_l138_10_1 = _zz__zz_when_Softmax_l138_10_2;
+  assign _zz__zz_when_Softmax_l138_10 = {5'd0, _zz__zz_when_Softmax_l138_10_1};
+  assign _zz__zz_when_Softmax_l138_10_2 = (_zz__zz_when_Softmax_l138_10_3 * _zz__zz_when_Softmax_l138_10_4);
+  assign _zz__zz_when_Softmax_l138_10_3 = _zz_when_Softmax_l138_9[24:0];
+  assign _zz__zz_when_Softmax_l138_10_4 = _zz_when_Softmax_l138_3[17:0];
+  assign _zz__zz_when_Softmax_l138_11_1 = _zz__zz_when_Softmax_l138_11_2;
+  assign _zz__zz_when_Softmax_l138_11 = {5'd0, _zz__zz_when_Softmax_l138_11_1};
+  assign _zz__zz_when_Softmax_l138_11_2 = (_zz__zz_when_Softmax_l138_11_3 * _zz__zz_when_Softmax_l138_11_4);
+  assign _zz__zz_when_Softmax_l138_11_3 = _zz_when_Softmax_l138_7[24:0];
+  assign _zz__zz_when_Softmax_l138_11_5 = 10'h2ab;
+  assign _zz__zz_when_Softmax_l138_11_4 = {8'd0, _zz__zz_when_Softmax_l138_11_5};
+  assign _zz__zz_when_Softmax_l138_12_1 = _zz__zz_when_Softmax_l138_12_2;
+  assign _zz__zz_when_Softmax_l138_12 = {5'd0, _zz__zz_when_Softmax_l138_12_1};
+  assign _zz__zz_when_Softmax_l138_12_2 = (_zz__zz_when_Softmax_l138_12_3 * _zz__zz_when_Softmax_l138_12_4);
+  assign _zz__zz_when_Softmax_l138_12_3 = _zz_when_Softmax_l138_9[24:0];
+  assign _zz__zz_when_Softmax_l138_12_5 = 8'hab;
+  assign _zz__zz_when_Softmax_l138_12_4 = {10'd0, _zz__zz_when_Softmax_l138_12_5};
+  assign _zz__zz_when_Softmax_l138_13_1 = _zz__zz_when_Softmax_l138_13_2;
+  assign _zz__zz_when_Softmax_l138_13 = {5'd0, _zz__zz_when_Softmax_l138_13_1};
+  assign _zz__zz_when_Softmax_l138_13_2 = (_zz__zz_when_Softmax_l138_13_3 * _zz__zz_when_Softmax_l138_13_5);
+  assign _zz__zz_when_Softmax_l138_13_4 = (_zz_when_Softmax_l138_10 >>> 4'd12);
+  assign _zz__zz_when_Softmax_l138_13_3 = _zz__zz_when_Softmax_l138_13_4[24:0];
+  assign _zz__zz_when_Softmax_l138_13_6 = 6'h22;
+  assign _zz__zz_when_Softmax_l138_13_5 = {12'd0, _zz__zz_when_Softmax_l138_13_6};
+  assign _zz__zz_when_Softmax_l138_14 = (_zz__zz_when_Softmax_l138_14_1 + _zz__zz_when_Softmax_l138_14_10);
+  assign _zz__zz_when_Softmax_l138_14_1 = (_zz__zz_when_Softmax_l138_14_2 + _zz__zz_when_Softmax_l138_14_8);
+  assign _zz__zz_when_Softmax_l138_14_2 = (_zz__zz_when_Softmax_l138_14_3 + _zz__zz_when_Softmax_l138_14_6);
+  assign _zz__zz_when_Softmax_l138_14_3 = (_zz__zz_when_Softmax_l138_14_4 + _zz__zz_when_Softmax_l138_14_5);
+  assign _zz__zz_when_Softmax_l138_14_4 = {4'd0, _zz_when_Softmax_l138_1};
+  assign _zz__zz_when_Softmax_l138_14_5 = {3'd0, _zz_when_Softmax_l138_2};
+  assign _zz__zz_when_Softmax_l138_14_7 = (_zz_when_Softmax_l138_5 >>> 1'd1);
+  assign _zz__zz_when_Softmax_l138_14_6 = _zz__zz_when_Softmax_l138_14_7[23:0];
+  assign _zz__zz_when_Softmax_l138_14_9 = (_zz_when_Softmax_l138_11 >>> 4'd12);
+  assign _zz__zz_when_Softmax_l138_14_8 = _zz__zz_when_Softmax_l138_14_9[23:0];
+  assign _zz__zz_when_Softmax_l138_14_11 = (_zz_when_Softmax_l138_12 >>> 4'd12);
+  assign _zz__zz_when_Softmax_l138_14_10 = _zz__zz_when_Softmax_l138_14_11[23:0];
+  assign _zz__zz_when_Softmax_l138_14_13 = (_zz_when_Softmax_l138_13 >>> 4'd12);
+  assign _zz__zz_when_Softmax_l138_14_12 = _zz__zz_when_Softmax_l138_14_13[23:0];
+  assign _zz_when_Softmax_l138_15 = (_zz_when_Softmax_l138_1 >>> 3'd5);
+  assign _zz_when_Softmax_l138_16 = _zz_when_Softmax_l138_14[14:0];
+  assign _zz__zz_expValues_0_1 = ({12'd0,_zz__zz_expValues_0_1_1} <<< 4'd12);
+  assign _zz__zz_expValues_0_1_1 = {12'd0, _zz_when_Softmax_l138_1};
+  assign _zz__zz_expValues_0_1_2 = {8'd0, _zz_when_Softmax_l138_14};
+  assign _zz__zz_expValues_0 = {4'd0, _zz_expValues_0_2};
+  assign _zz__zz_expValues_0_2 = _zz_when_Softmax_l138_14[19:0];
   assign _zz_sumExp = {2'd0, _zz_sumExp_1};
   assign _zz_sumExp_2 = counter[1:0];
-  assign _zz__zz_3 = counter[1:0];
   assign _zz__zz_outputReg_0 = ({12'd0,_zz__zz_outputReg_0_1} <<< 4'd12);
   assign _zz__zz_outputReg_0_1 = {12'd0, _zz__zz_outputReg_0_2};
   assign _zz__zz_outputReg_0_3 = counter[1:0];
   assign _zz__zz_outputReg_0_4 = {10'd0, sumExp};
+  assign _zz__zz_3 = counter[1:0];
   always @(*) begin
     case(_zz_when_Softmax_l170_1)
       2'b00 : _zz_when_Softmax_l170 = inputReg_0;
@@ -307,28 +376,37 @@ module Softmax (
   assign _zz_when_Softmax_l138_1 = 20'h01000;
   assign _zz_when_Softmax_l138_2 = ((21'h008000 < _zz_when_Softmax_l138) ? 21'h008000 : _zz_when_Softmax_l138);
   assign _zz_when_Softmax_l138_3 = {3'd0, _zz_when_Softmax_l138_2};
-  assign _zz_when_Softmax_l138_4 = (_zz__zz_when_Softmax_l138_4 >>> 4'd12);
-  assign _zz_when_Softmax_l138_5 = (_zz__zz_when_Softmax_l138_5 >>> 4'd12);
-  assign _zz_when_Softmax_l138_6 = (_zz__zz_when_Softmax_l138_6 >>> 4'd12);
-  assign _zz_when_Softmax_l138_7 = (_zz__zz_when_Softmax_l138_7 + _zz__zz_when_Softmax_l138_7_14);
-  assign when_Softmax_l138 = (_zz_when_Softmax_l138_8 < _zz_when_Softmax_l138_9);
+  assign _zz_when_Softmax_l138_4 = _zz__zz_when_Softmax_l138_4;
+  assign _zz_when_Softmax_l138_5 = (_zz_when_Softmax_l138_4 >>> 4'd12);
+  assign _zz_when_Softmax_l138_6 = _zz__zz_when_Softmax_l138_6;
+  assign _zz_when_Softmax_l138_7 = (_zz_when_Softmax_l138_6 >>> 4'd12);
+  assign _zz_when_Softmax_l138_8 = _zz__zz_when_Softmax_l138_8;
+  assign _zz_when_Softmax_l138_9 = (_zz_when_Softmax_l138_8 >>> 4'd12);
+  assign _zz_when_Softmax_l138_10 = _zz__zz_when_Softmax_l138_10;
+  assign _zz_when_Softmax_l138_11 = _zz__zz_when_Softmax_l138_11;
+  assign _zz_when_Softmax_l138_12 = _zz__zz_when_Softmax_l138_12;
+  assign _zz_when_Softmax_l138_13 = _zz__zz_when_Softmax_l138_13;
+  assign _zz_when_Softmax_l138_14 = (_zz__zz_when_Softmax_l138_14 + _zz__zz_when_Softmax_l138_14_12);
+  assign when_Softmax_l138 = (_zz_when_Softmax_l138_15 < _zz_when_Softmax_l138_16);
+  assign _zz_expValues_0_1 = (_zz__zz_expValues_0_1 / _zz__zz_expValues_0_1_2);
   always @(*) begin
     if(when_Softmax_l136) begin
       if(when_Softmax_l138) begin
-        _zz_expValues_0 = _zz__zz_expValues_0[19:0];
+        _zz_expValues_0 = _zz_expValues_0_1[19:0];
       end else begin
         _zz_expValues_0 = 20'h00001;
       end
     end else begin
-      _zz_expValues_0 = ((_zz__zz_expValues_0_4 < _zz_when_Softmax_l138_7) ? _zz_expValues_0_1 : _zz__zz_expValues_0_5);
+      _zz_expValues_0 = ((_zz__zz_expValues_0 < _zz_when_Softmax_l138_14) ? _zz_expValues_0_2 : _zz__zz_expValues_0_2);
     end
   end
 
-  assign _zz_expValues_0_1 = 20'hfffff;
+  assign _zz_expValues_0_2 = 20'hfffff;
   assign when_Softmax_l201 = (counter < 3'b100);
   assign when_Softmax_l211 = (counter < 3'b100);
-  assign _zz_3 = ({3'd0,1'b1} <<< _zz__zz_3);
   assign _zz_outputReg_0 = (_zz__zz_outputReg_0 / _zz__zz_outputReg_0_4);
+  assign _zz_3 = ({3'd0,1'b1} <<< _zz__zz_3);
+  assign _zz_outputReg_0_1 = _zz_outputReg_0;
   always @(posedge clk or posedge reset) begin
     if(reset) begin
       state_1 <= State_IDLE;
@@ -447,16 +525,16 @@ module Softmax (
       State_DIV_CALC : begin
         if(when_Softmax_l211) begin
           if(_zz_3[0]) begin
-            outputReg_0 <= _zz_outputReg_0[19:0];
+            outputReg_0 <= _zz_outputReg_0_1[19:0];
           end
           if(_zz_3[1]) begin
-            outputReg_1 <= _zz_outputReg_0[19:0];
+            outputReg_1 <= _zz_outputReg_0_1[19:0];
           end
           if(_zz_3[2]) begin
-            outputReg_2 <= _zz_outputReg_0[19:0];
+            outputReg_2 <= _zz_outputReg_0_1[19:0];
           end
           if(_zz_3[3]) begin
-            outputReg_3 <= _zz_outputReg_0[19:0];
+            outputReg_3 <= _zz_outputReg_0_1[19:0];
           end
         end
       end
