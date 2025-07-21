@@ -3,9 +3,9 @@ import spinal.lib._
 
 // Softmax配置参数
 case class SoftmaxConfig(
-  dataWidth: Int = 16,      // 数据位宽
+  dataWidth: Int = 20,      // 增加数据位宽以提高精度
   vectorSize: Int = 4,      // 输入向量大小
-  fracWidth: Int = 8        // 小数部分位宽
+  fracWidth: Int = 12       // 增加小数部分位宽以提高精度
 ) {
   def intWidth = dataWidth - fracWidth
 }
@@ -41,29 +41,54 @@ class Softmax(config: SoftmaxConfig) extends Component {
   io.valid_out := state === State.DONE
   io.output := outputReg
 
-  // 指数近似函数 - 使用简化的查找表方法
+  // 精确的指数近似函数 - 使用优化的泰勒级数
   def expApprox(x: SFix): UInt = {
     val result = UInt(config.dataWidth bits)
     
-    // 简化的指数近似：对于小的x值，exp(x) ≈ 1 + x
-    // 对于负值，我们使用 exp(x) = 1/(exp(-x))的近似
-    val xRaw = x.raw.asUInt
-    val isNegative = x.raw.msb
-    val absXRaw = Mux(isNegative, (~xRaw + 1).resized, xRaw)
+    val xRaw = x.raw
+    val isNegative = xRaw.msb
+    val absXRaw = Mux(isNegative, -xRaw, xRaw).asUInt
     
-    val term1 = U(1 << config.fracWidth, config.dataWidth bits) // 1.0 in fixed point
-    val term2 = absXRaw.resized                                 // x term
+    // 限制输入范围以避免溢出
+    val clampedAbsX = Mux(absXRaw > U(8 << config.fracWidth), U(8 << config.fracWidth), absXRaw)
+    
+    val one = U(1 << config.fracWidth, config.dataWidth bits)
+    val x_scaled = clampedAbsX.resized
+    
+    // 使用高精度泰勒级数：exp(x) ≈ 1 + x + x²/2! + x³/3! + x⁴/4! + x⁵/5!
+    val x_term = x_scaled
+    
+    // 计算x的幂次，使用更高精度
+    val x2 = (x_scaled.resize(config.dataWidth + 4) * x_scaled.resize(config.dataWidth + 4)) >> config.fracWidth
+    val x3 = (x2 * x_scaled.resize(config.dataWidth + 4)) >> config.fracWidth
+    val x4 = (x3 * x_scaled.resize(config.dataWidth + 4)) >> config.fracWidth
+    val x5 = (x4 * x_scaled.resize(config.dataWidth + 4)) >> config.fracWidth
+    
+    // 计算各项系数 (使用精确的分数)
+    val x2_div2 = x2 >> 1                    // x²/2
+    val x3_div6 = (x3 * U(683)) >> 12        // x³/6 ≈ x³ * 0.1667 ≈ x³ * 683/4096
+    val x4_div24 = (x4 * U(171)) >> 12       // x⁴/24 ≈ x⁴ * 0.0417 ≈ x⁴ * 171/4096
+    val x5_div120 = (x5 * U(34)) >> 12       // x⁵/120 ≈ x⁵ * 0.0083 ≈ x⁵ * 34/4096
+    
+    val expPos = (one.resize(config.dataWidth + 4) + 
+                  x_term.resize(config.dataWidth + 4) + 
+                  x2_div2.resized + 
+                  x3_div6.resized + 
+                  x4_div24.resized + 
+                  x5_div120.resized).resized
     
     when(isNegative) {
-      // 对于负值：exp(x) ≈ 1/(1+|x|) ≈ 1-|x| (简化)
-      when(absXRaw < (1 << config.fracWidth)) {
-        result := (term1 - term2).resized
+      // 对于负值：exp(x) = 1/exp(-x)
+      when(expPos > (one >> 5)) {  // 避免除零
+        val reciprocal = (one.resize(config.dataWidth + config.fracWidth) << config.fracWidth) / expPos.resize(config.dataWidth + config.fracWidth)
+        result := reciprocal.resized
       } otherwise {
-        result := U(1, config.dataWidth bits) // 很小的值
+        result := U(1, config.dataWidth bits) // 非常小的值
       }
     } otherwise {
-      // 对于正值：exp(x) ≈ 1 + x
-      result := (term1 + term2).resized
+      // 限制最大值以避免溢出
+      val maxExp = U((1 << config.dataWidth) - 1, config.dataWidth bits)
+      result := Mux(expPos > maxExp.resize(config.dataWidth + 4), maxExp, expPos.resized)
     }
     
     result
@@ -125,9 +150,10 @@ class Softmax(config: SoftmaxConfig) extends Component {
 
     is(State.DIV_CALC) {
       when(counter < config.vectorSize) {
-        // 简化的除法：使用移位近似
-        val dividend = expValues(counter.resized) << config.fracWidth
-        val quotient = dividend / sumExp.resized
+        // 改进的除法：使用更高精度的定点除法
+        val dividend = expValues(counter.resized).resize(config.dataWidth + config.fracWidth) << config.fracWidth
+        val divisor = sumExp.resized.resize(config.dataWidth + config.fracWidth)
+        val quotient = dividend / divisor
         outputReg(counter.resized) := quotient.resized
         counter := counter + 1
       } otherwise {
@@ -144,9 +170,9 @@ class Softmax(config: SoftmaxConfig) extends Component {
 // 顶层模块
 class SoftmaxTop extends Component {
   val config = SoftmaxConfig(
-    dataWidth = 16,
+    dataWidth = 20,
     vectorSize = 4,
-    fracWidth = 8
+    fracWidth = 12
   )
   
   val io = new Bundle {
