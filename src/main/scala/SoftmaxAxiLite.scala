@@ -5,9 +5,9 @@ import spinal.lib.fsm._
 
 // AXI-Lite Softmax配置参数
 case class SoftmaxAxiLiteConfig(
-  dataWidth: Int = 16,      // 数据位宽
+  dataWidth: Int = 20,      // 增加数据位宽以提高精度
   vectorSize: Int = 4,      // 输入向量大小
-  fracWidth: Int = 8,       // 小数部分位宽
+  fracWidth: Int = 12,      // 增加小数部分位宽以提高精度
   axiDataWidth: Int = 32,   // AXI数据位宽
   axiAddrWidth: Int = 12    // AXI地址位宽
 ) {
@@ -141,9 +141,9 @@ class SoftmaxAxiLite(config: SoftmaxAxiLiteConfig) extends Component {
 // AXI-Lite Softmax顶层模块
 class SoftmaxAxiLiteTop extends Component {
   val config = SoftmaxAxiLiteConfig(
-    dataWidth = 16,
+    dataWidth = 20,
     vectorSize = 4,
-    fracWidth = 8,
+    fracWidth = 12,
     axiDataWidth = 32,
     axiAddrWidth = 12
   )
