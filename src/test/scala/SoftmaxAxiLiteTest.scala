@@ -6,16 +6,16 @@ import org.scalatest.funsuite.AnyFunSuite
 class SoftmaxAxiLiteTest extends AnyFunSuite {
   
   val config = SoftmaxAxiLiteConfig(
-    dataWidth = 16,
+    dataWidth = 20,
     vectorSize = 4,
-    fracWidth = 8,
+    fracWidth = 12,
     axiDataWidth = 32,
     axiAddrWidth = 12
   )
 
   // 辅助函数：将浮点数转换为定点数的AXI格式
   def floatToAxiSFix(value: Double): Long = {
-    val clampedValue = math.max(-128.0, math.min(127.99609375, value))
+    val clampedValue = math.max(-128.0, math.min(127.999755859375, value))
     val scaledValue = (clampedValue * (1 << config.fracWidth)).toLong
     if (scaledValue >= 0) {
       scaledValue
