@@ -5,15 +5,15 @@ import org.scalatest.funsuite.AnyFunSuite
 class SoftmaxTest extends AnyFunSuite {
   
   val config = SoftmaxConfig(
-    dataWidth = 16,
+    dataWidth = 20,
     vectorSize = 4,
-    fracWidth = 8
+    fracWidth = 12
   )
 
   // 辅助函数：将浮点数转换为定点数
   def floatToSFix(value: Double): Double = {
-    // 确保值在SFix范围内：-128.0 到 127.99609375
-    val clampedValue = math.max(-128.0, math.min(127.99609375, value))
+    // 确保值在SFix范围内：-128.0 到 127.999755859375 (20位，12位小数)
+    val clampedValue = math.max(-128.0, math.min(127.999755859375, value))
     clampedValue
   }
 
